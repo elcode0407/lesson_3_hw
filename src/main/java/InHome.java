@@ -92,6 +92,7 @@ public class InHome {
                 System.out.println("Число должно быть меньше или равно 9");
             }
         }
+
     }
 
     static String getWord(String[] s) {
