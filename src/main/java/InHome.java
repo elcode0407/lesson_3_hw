@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class InHome {
     static Scanner sc = new Scanner(System.in);
     static Random rand = new Random();
-    public static void main(String args[]) throws IOException {
-        wordU();
+    public static void main(String[] args) throws IOException {
+        gamenumber();
     }
 
     private static void wordU() {
@@ -61,16 +61,16 @@ public class InHome {
 
     private static void gamenumber() {
 
-        int rand_int1 = rand.nextInt(9);
+        int rand_int = rand.nextInt(9);
         int an = 3;
 
         System.out.println("Угадай число от 1 до 9:");
-        System.out.println("-------------"+rand_int1+"---------------");
+        System.out.println("-------------"+rand_int+"---------------");
         for (int i = 0; i < 4; i++) {
 
             int a = sc.nextInt();
             if (a <= 9) {
-                if (a == rand_int1) {
+                if (a == rand_int) {
                     System.out.println("Alright");
                     System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
                     int b = sc.nextInt();
@@ -81,12 +81,39 @@ public class InHome {
                     }
                     break;
                 } else {
-                    if (an != 1) {
-                        an--;
-                        System.out.println("Попйток осталось: " + an);
-                    } else {
-                        break;
+                    if (rand_int > a){
+                        System.out.println("Ваше число меньше загадонного");
+                        if (an != 1) {
+                            an--;
+                            System.out.println("Попйток осталось: " + an);
+                        } else {
+                            System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
+                            int b = sc.nextInt();
+                            if (b == 1) {
+                                gamenumber();
+                            } else if (b == 0) {
+                                break;
+                            }
+                            break;
+                        }
                     }
+                    else {
+                        System.out.println("Ваше число больше загадонного");
+                        if (an != 1) {
+                            an--;
+                            System.out.println("Попйток осталось: " + an);
+                        } else {
+                            System.out.println("Повторить игру еще раз? 1 – да / 0 – нет");
+                            int b = sc.nextInt();
+                            if (b == 1) {
+                                gamenumber();
+                            } else if (b == 0) {
+                                break;
+                            }
+                            break;
+                        }
+                    }
+
                 }
             } else {
                 System.out.println("Число должно быть меньше или равно 9");
